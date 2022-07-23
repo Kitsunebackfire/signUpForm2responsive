@@ -1,0 +1,127 @@
+.form {
+  background-image: none;
+  min-height: 651px;
+  width: 65vw;
+  font-size: 1.3rem;
+  overflow: hidden;
+}
+
+.form__serviceMessage {
+  background-color: rgb(225, 225, 225);
+  padding: 25px;
+  height: 20vh;
+}
+.form__inputContainer {
+  height: auto;
+  padding: 25px 25px 30px 25px;
+  display: grid;
+  gap: 30px;
+  max-width: 1300px;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr))
+  
+  
+}
+.form__letsDoThis {
+  grid-column: 1/-1;
+}
+.form__createAccountContainer {
+  background-color: rgb(225, 225, 225);
+  height: 55vh;
+  padding: 25px 13px 25px 25px;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr))
+
+}
+
+.form__createAccountBtn {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(127, 127, 230);
+  color: white;
+  margin-bottom: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 559.26px;
+  min-width: 409px;
+}
+.form__haveAnAccount {
+  
+}
+.form__haveAnAccount a {
+  
+}
+
+@media screen and (max-width: 670px) {
+  .form {
+  background-image: url("../images/wallpaper.gif");
+  background-repeat: repeat;
+  background-size: cover;
+  height: 100vh;
+  padding: 25px;
+  box-sizing: border-box;  
+  width: auto;
+  font-size: .8rem;
+  
+}
+  .form__mainContainer {
+    height: 100%;
+    display: grid;
+    background-color: rgba(240, 255, 255, 0.647);
+    grid-template-rows: .4fr 2fr .4fr .1fr;
+    border-radius: 9px;
+  }
+  .form__serviceMessage {
+    font-size: .9rem;
+    background-color: transparent;
+    padding:  15px;
+    text-align: center;
+    min-height: 140px;
+    height: auto;
+  }
+
+  .form__inputContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    height: 100%;
+    gap: 0;
+    padding: 0 7px 0 0;
+  }
+  .form__letsDoThis {
+    text-align: center;
+    grid-column: span 1;
+  }
+  .form__createAccountContainer {
+    padding: 0 15px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    font-size: .9rem; 
+    font-weight: 400;
+    background-color: transparent;
+
+  }
+
+  .form__createAccountBtn {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(127, 127, 230);
+    color: white;
+    margin-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 483px;
+    min-width: 280px;
+  }
+  .form__haveAnAccount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+  .form__haveAnAccount a {
+    margin-top: 4px;
+  }
+}

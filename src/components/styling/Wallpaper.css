@@ -1,0 +1,38 @@
+.wallpaper {
+  background-image: url("../images/wallpaper.gif");
+  background-repeat: repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 35vw;
+}
+
+@media screen and (max-width: 670px) {
+    .wallpaper {
+        background-Image: none;
+        background-repeat: none;
+        background-size: none;
+        width: auto;
+        height: auto;
+    }
+
+    .wallpaper__messageContainer {
+        display: none;
+    }
+    .wallpaper__creditContainer {
+        position: absolute;
+        bottom: 5px;
+        left: 0;
+        right: 0;
+        width: 300px;
+        margin: auto;
+        text-align: center;
+        color: white;
+        font-size: .7rem;
+    }
+    .wallpaper__creditLink {
+        color: rgb(127, 127, 230);
+    }
+}
+
+
+
