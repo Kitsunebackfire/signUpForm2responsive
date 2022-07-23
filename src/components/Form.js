@@ -1,6 +1,9 @@
 import React, { useRef } from "react";
 import FormInput from "./FormInput.js";
 import "./styling/Form.css";
+import Icon from "@mdi/react";
+import { mdiAccountCircle } from "@mdi/js";
+import { mdiGithub } from "@mdi/js";
 
 function Form(props) {
   const firstName = useRef(null);
@@ -12,6 +15,21 @@ function Form(props) {
 
   return (
     <div className="form">
+      <a href="https://linktr.ee/kurtisiveycodes">
+        <Icon
+          alt="linkTree media link"
+          className="form__linkTree"
+          path={mdiAccountCircle}
+        />
+      </a>
+      <a href="https://github.com/Kitsunebackfire/signUpForm2responsive">
+        <Icon
+          alt="github repository link"
+          className="form__github"
+          path={mdiGithub}
+        />
+      </a>
+
       <div className="form__mainContainer">
         <div className="form__serviceMessage">
           This is not a real online service! You know you need something like

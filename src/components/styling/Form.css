@@ -63,7 +63,33 @@
   width: auto;
   font-size: .8rem;
   
-}
+  }
+
+  .form__linkTree {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: 5px;
+    right: 5px;
+    color: rgb(240, 242, 243);
+  }
+  .form__linkTree:hover {
+    color:rgb(127, 127, 230);
+    transform: scale(1.1);
+  }
+  .form__github {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: 5px;
+    right: 45px;
+    color: rgb(240, 242, 243);
+  }
+  .form__github:hover {
+    color:rgb(127, 127, 230);
+    transform: scale(1.1);
+  }
+
   .form__mainContainer {
     height: 100%;
     display: grid;
