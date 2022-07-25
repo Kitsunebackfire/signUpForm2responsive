@@ -7,15 +7,28 @@ const FormInput = React.forwardRef((props, ref) => {
       <label className="formInput__label" htmlFor={props.id}>
         {props.labelText}
       </label>
-      <input
-        ref={ref}
-        placeholder={props.placeholder ? props.placeholder : null}
-        required
-        className="formInput__input"
-        id={props.id}
-        name={props.id}
-        type={props.type}
-      ></input>
+      {props.handleChange ? (
+        <input
+          ref={ref}
+          placeholder={props.placeholder ? props.placeholder : null}
+          required
+          className="formInput__input"
+          id={props.id}
+          name={props.id}
+          type={props.type}
+          onChange={(e) => props.handleChange(e)}
+        />
+      ) : (
+        <input
+          ref={ref}
+          placeholder={props.placeholder ? props.placeholder : null}
+          required
+          className="formInput__input"
+          id={props.id}
+          name={props.id}
+          type={props.type}
+        />
+      )}
       {props.passwordMessagePresent ? <div className=""></div> : null}
     </div>
   );

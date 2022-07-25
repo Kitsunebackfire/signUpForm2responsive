@@ -25,6 +25,17 @@
     width: 100%;
 }
 
+.formInput__notMatching {
+    font-size: .9rem;
+    margin-top: 2px;
+    padding-left: 5px;
+    border: none;
+    border-radius: 5px;
+    height: 25px;
+    width: 100%;
+    border: 1px solid rgb(201, 45, 45);
+}
+
 .formInput__input:focus-visible {
     outline: none;
 }
@@ -53,5 +64,8 @@
         border: none;
         border-radius: 5px;
         height: 20px;
+    }
+    .formInput__notMatching {
+        border: 1px solid rgb(201, 45, 45);
     }
 }

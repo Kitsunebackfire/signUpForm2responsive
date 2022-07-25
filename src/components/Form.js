@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import FormInput from "./FormInput.js";
 import "./styling/Form.css";
 import Icon from "@mdi/react";
@@ -12,6 +12,30 @@ function Form(props) {
   const phoneNumber = useRef(null);
   const password = useRef(null);
   const confirmPassword = useRef(null);
+
+  const [state, setState] = useState({ password: "", confirmPassword: "" });
+
+  const handleChange = (e) => {
+    setState((prev) => {
+      return {
+        ...prev,
+        [e.target.name]: e.target.value,
+      };
+    });
+  };
+
+  useEffect(() => {
+    const handlePasswordMatching = () => {
+      if (state.password !== state.confirmPassword) {
+        password.current.classList.remove(".formInput__input");
+
+        password.current.classList.add(".formInput__notMatching");
+        confirmPassword.current.classList.add(".formInput__notMatching");
+      }
+    };
+    console.log("hi");
+    handlePasswordMatching();
+  }, [state]);
 
   return (
     <div className="form">
@@ -34,13 +58,18 @@ function Form(props) {
           path={mdiGithub}
         />
         <div className="hide">
-          <div className="linkDescription">Access to the github repository</div>
+          <div className="linkDescription">
+            Access to this project's github repo
+          </div>
           <div className="squareRotated"></div>
         </div>
       </a>
 
       <div className="form__mainContainer">
-        <div className="form__serviceMessage">
+        <div
+          className="form__serviceMessage"
+          onClick={() => console.log(password.current.classList)}
+        >
           This is not a real online service! You know you need something like
           this in your life to help you realize your deepest dreams.
           <br /> Sign up <em>now</em> to get started
@@ -90,6 +119,7 @@ function Form(props) {
               labelText={"PASSWORD"}
               type={"password"}
               placeholder={"Enter a Password"}
+              handleChange={handleChange}
             />
             <FormInput
               ref={confirmPassword}
@@ -97,6 +127,7 @@ function Form(props) {
               labelText={"CONFIRM PASSWORD"}
               placeholder={"Reenter Password"}
               type={"password"}
+              handleChange={handleChange}
             />
           </div>
 
