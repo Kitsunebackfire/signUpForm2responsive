@@ -14,6 +14,7 @@ function Form(props) {
   const confirmPassword = useRef(null);
 
   const [state, setState] = useState({ password: "", confirmPassword: "" });
+  const [passwordMessage, setPasswordMessage] = useState("");
 
   const handleChange = (e) => {
     setState((prev) => {
@@ -26,14 +27,13 @@ function Form(props) {
 
   useEffect(() => {
     const handlePasswordMatching = () => {
-      if (
-        state.password !== state.confirmPassword &&
-        !password.current.classList.contains(".formInput__notMatching") &&
-        !confirmPassword.current.classList.contains(".formInput__notMatching")
-      ) {
+      if (state.password === "" && state.confirmPassword === "") {
+        setPasswordMessage("");
+      } else if (state.password !== state.confirmPassword) {
         console.log("passwords no longer equal");
-        password.current.style.border = "1px solid red";
-        confirmPassword.current.classList.toggle(".formInput__notMatching");
+        setPasswordMessage("** Passwords Do Not Match");
+      } else if (state.password === state.confirmPassword) {
+        setPasswordMessage("Passwords Match");
       }
     };
     console.log(`password: ${state.password}`);
@@ -124,6 +124,7 @@ function Form(props) {
               type={"password"}
               placeholder={"Enter a Password"}
               handleChange={handleChange}
+              passwordMessage={passwordMessage}
             />
             <FormInput
               ref={confirmPassword}
@@ -132,6 +133,7 @@ function Form(props) {
               placeholder={"Reenter Password"}
               type={"password"}
               handleChange={handleChange}
+              passwordMessage={passwordMessage}
             />
           </div>
 

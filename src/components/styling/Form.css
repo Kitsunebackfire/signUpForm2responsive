@@ -15,7 +15,7 @@
   height: auto;
   padding: 25px 25px 30px 25px;
   display: grid;
-  gap: 30px;
+  gap: 0 25px;
   max-width: 1300px;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr))
   
@@ -23,6 +23,8 @@
 }
 .form__letsDoThis {
   grid-column: 1/-1;
+  margin-bottom: 30px;
+  margin-left: 4px;
 }
 .form__createAccountContainer {
   background-color: rgb(225, 225, 225);
@@ -44,12 +46,6 @@
   width: 100%;
   max-width: 559.26px;
   min-width: 409px;
-}
-.form__haveAnAccount {
-  
-}
-.form__haveAnAccount a {
-  
 }
 
 .form__linkTree {
@@ -183,7 +179,7 @@
     background-color: transparent;
     padding:  15px;
     text-align: center;
-    min-height: 140px;
+    min-height: 100px;
     height: auto;
   }
 
@@ -197,6 +193,8 @@
   .form__letsDoThis {
     text-align: center;
     grid-column: span 1;
+    margin-bottom: 0;
+    margin-left: 0;
   }
   .form__createAccountContainer {
     padding: 0 15px;
