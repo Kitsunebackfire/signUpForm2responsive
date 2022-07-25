@@ -52,6 +52,84 @@
   
 }
 
+.form__linkTree {
+  position: absolute;
+  width: 50px;
+  height: auto;
+  bottom: 5px;
+  right: 5px;
+  color: rgb(127, 127, 230);
+}
+.form__linkTree:hover {
+  color:rgb(0, 0, 0);
+  transform: scale(1.1);
+}
+.hide {
+  display: none;
+}
+.linkDescription {
+  z-index: 3;
+  position: absolute;
+  text-align: center;
+  font-size: .85rem;
+  top: 15px;
+  right: 1px;
+}
+.squareRotated {
+  z-index: 1;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid rgb(255, 255, 255);
+  position: relative;
+  bottom: -20px;
+  left: 90px;
+  height: 20px;
+  width: 20px;
+  transform: rotate(25deg);
+}
+.form__linkTree:hover + .hide {
+  z-index: 2;
+  height: 60px;
+  width: 130px;
+  display: block;
+  text-decoration: none;
+  color: rgb(1, 1, 1);
+  position: absolute;
+  bottom: 71px;
+  right: 50px;
+  border-radius: 5px;
+  background-color: white;
+  padding: 2px;
+}
+
+.form__github:hover + .hide {
+  height: 60px;
+  width: 130px;
+  display: block;
+  text-decoration: none;
+  color: rgb(1, 1, 1);
+
+  position: absolute;
+  bottom: 71px;
+  right: 99px;
+  border-radius: 5px;
+  background-color: white;
+  padding: 2px;
+}
+.form__github {
+  position: absolute;
+  width: 50px;
+  height: auto;
+  bottom: 5px;
+  right: 55px;
+  color: rgb(127, 127, 230);
+
+}
+.form__github:hover {
+  color:rgb(0, 0, 0);
+  transform: scale(1.1);
+}
+
 @media screen and (max-width: 670px) {
   .form {
   background-image: url("../images/wallpaper.gif");
@@ -76,6 +154,9 @@
   .form__linkTree:hover {
     color:rgb(127, 127, 230);
     transform: scale(1.1);
+  }
+  .form__linkTree:hover + .hide , .form__github:hover + .hide {
+    display: none;
   }
   .form__github {
     position: absolute;

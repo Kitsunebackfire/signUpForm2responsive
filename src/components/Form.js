@@ -21,13 +21,22 @@ function Form(props) {
           className="form__linkTree"
           path={mdiAccountCircle}
         />
+        <div className="hide">
+          <div className="linkDescription">Access to my social media</div>
+          <div className="squareRotated"></div>
+        </div>
       </a>
+
       <a href="https://github.com/Kitsunebackfire/signUpForm2responsive">
         <Icon
           alt="github repository link"
           className="form__github"
           path={mdiGithub}
         />
+        <div className="hide">
+          <div className="linkDescription">Access to the github repository</div>
+          <div className="squareRotated"></div>
+        </div>
       </a>
 
       <div className="form__mainContainer">
