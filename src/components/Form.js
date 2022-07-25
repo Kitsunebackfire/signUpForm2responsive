@@ -26,14 +26,18 @@ function Form(props) {
 
   useEffect(() => {
     const handlePasswordMatching = () => {
-      if (state.password !== state.confirmPassword) {
-        password.current.classList.remove(".formInput__input");
-
-        password.current.classList.add(".formInput__notMatching");
-        confirmPassword.current.classList.add(".formInput__notMatching");
+      if (
+        state.password !== state.confirmPassword &&
+        !password.current.classList.contains(".formInput__notMatching") &&
+        !confirmPassword.current.classList.contains(".formInput__notMatching")
+      ) {
+        console.log("passwords no longer equal");
+        password.current.style.border = "1px solid red";
+        confirmPassword.current.classList.toggle(".formInput__notMatching");
       }
     };
-    console.log("hi");
+    console.log(`password: ${state.password}`);
+    console.log(`confirm password: ${state.confirmPassword}`);
     handlePasswordMatching();
   }, [state]);
 
