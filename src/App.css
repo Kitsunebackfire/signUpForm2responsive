@@ -10,6 +10,8 @@
   overflow: hidden;
   }
 
+
+
 @media screen and (max-width: 670px) {
   .app {
     box-sizing: none;

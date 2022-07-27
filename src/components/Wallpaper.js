@@ -4,8 +4,9 @@ function Wallpaper() {
   return (
     <div className="wallpaper">
       <div className="wallpaper__messageContainer">
-        <div className="wallpaper__transparentBox"></div>
-        <div className="wallpaper__message">Join Now</div>
+        <div className="wallpaper__transparentBox">
+          <div className="wallpaper__message">Join Now</div>
+        </div>
       </div>
       <div className="wallpaper__creditContainer">
         <div className="wallpaper__credit">
