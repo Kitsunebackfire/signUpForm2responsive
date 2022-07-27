@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/signUpForm2responsive/static/css/main.4b1f0d43.css",
+    "main.js": "/signUpForm2responsive/static/js/main.721243a5.js",
+    "static/media/wallpaper.gif": "/signUpForm2responsive/static/media/wallpaper.ec7a25e246699ab82f36.gif",
+    "index.html": "/signUpForm2responsive/index.html",
+    "main.4b1f0d43.css.map": "/signUpForm2responsive/static/css/main.4b1f0d43.css.map",
+    "main.721243a5.js.map": "/signUpForm2responsive/static/js/main.721243a5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4b1f0d43.css",
+    "static/js/main.721243a5.js"
+  ]
+}
