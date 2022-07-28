@@ -8,7 +8,35 @@ const FormInput = React.forwardRef((props, ref) => {
         {props.labelText}
       </label>
       {props.handleChange ? (
-        <div>
+        // passwords
+        <>
+          <div>
+            <input
+              ref={ref}
+              placeholder={props.placeholder ? props.placeholder : null}
+              required
+              className="formInput__input"
+              id={props.id}
+              name={props.id}
+              type={props.type}
+              onChange={(e) => {
+                //console.log(e.target.type);
+                props.handleChange(e);
+              }}
+            />
+          </div>
+
+          <div
+            className="formInput__passwordMessage"
+            style={
+              props.message.length > 15 ? { color: "red" } : { color: "green" }
+            }
+          >
+            {props.message}
+          </div>
+        </>
+      ) : (
+        <>
           <input
             ref={ref}
             placeholder={props.placeholder ? props.placeholder : null}
@@ -17,41 +45,16 @@ const FormInput = React.forwardRef((props, ref) => {
             id={props.id}
             name={props.id}
             type={props.type}
-            onChange={(e) => {
-              console.log(e.target.type);
-              props.handleChange(e);
-            }}
-            style={
-              props.passwordMessage !== ""
-                ? props.passwordMessage === "Passwords Match"
-                  ? { border: "1px solid green" }
-                  : { border: "1px solid red" }
-                : console.log(`${props.id} field is empty`)
-            }
+            maxLength={props.type === "tel" ? 10 : null}
           />
-        </div>
-      ) : (
-        <input
-          ref={ref}
-          placeholder={props.placeholder ? props.placeholder : null}
-          required
-          className="formInput__input"
-          id={props.id}
-          name={props.id}
-          type={props.type}
-        />
+          <div
+            className="formInput__passwordMessage"
+            style={props.message.length > 2 ? { color: "red" } : null}
+          >
+            {props.message}
+          </div>
+        </>
       )}
-
-      <div
-        className="formInput__passwordMessage"
-        style={
-          props.passwordMessage === "** Passwords Do Not Match"
-            ? { color: "red" }
-            : { color: "green" }
-        }
-      >
-        {props.passwordMessage}
-      </div>
     </div>
   );
 });

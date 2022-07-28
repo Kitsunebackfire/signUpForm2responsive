@@ -23,19 +23,33 @@
     border: 1px solid gray;
     width: 100%;
 }
+    .formInput__input:focus-visible {
+        outline: none;
+    }
 
-
-
-
-.formInput__input:focus-visible {
-    outline: none;
+.formInput__inputInvalid { 
+    border: 1px solid rgb(252, 0, 0);
 }
+    .formInput__inputInvalid:focus-visible {
+        outline: 1.5px solid rgb(252, 0, 0);
+    }
+
+.formInput__inputSuccess {
+    border: 1px solid rgb(20, 196, 10);
+}
+    .formInput__inputSuccess:focus-visible {
+        outline: 2px solid rgb(20, 196, 10)
+    }
+
+
+
+
 
 .formInput__passwordMessage {
     content: "";
     height: 18px;
     position: relative;
-    font-size: .9rem;
+    font-size: .8rem;
     left: 5px;
     top: 1px;
 }

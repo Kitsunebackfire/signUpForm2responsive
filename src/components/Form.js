@@ -13,11 +13,71 @@ function Form(props) {
   const password = useRef(null);
   const confirmPassword = useRef(null);
 
-  const [state, setState] = useState({ password: "", confirmPassword: "" });
+  const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false);
+  const [firstNameMessage, setFirstNameMessage] = useState("");
+  const [lastNameMessage, setLastNameMessage] = useState("");
+  const [emailMessage, setEmailMessage] = useState("");
+  const [phoneMessage, setPhoneMessage] = useState("");
+
   const [passwordMessage, setPasswordMessage] = useState("");
+  const [confirmPasswordMessage, setconfirmPasswordMessage] = useState("");
+  const [passwords, setPasswords] = useState({
+    password: "",
+    confirmPassword: "",
+  });
+
+  const handleEmail = (email) => {
+    // validates email via regex to catch incomplete emails and mark input field as invalid via classchange
+    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+      email
+    );
+  };
+
+  const handleSubmit = () => {
+    // must set to true to circumvent issue of handlesubmit previously not being able to validate password and confirm password
+    setHasBeenSubmitted(true);
+    //first name
+    if (firstName.current.value === "") {
+      firstName.current.classList = "formInput__input formInput__inputInvalid";
+      setFirstNameMessage("First Name field cannot be blank");
+    } else {
+      firstName.current.classList = "formInput__input formInput__inputSuccess";
+      setFirstNameMessage("");
+    }
+    // last name
+    if (lastName.current.value === "") {
+      lastName.current.classList = "formInput__input formInput__inputInvalid";
+      setLastNameMessage("Last Name field cannot be blank");
+    } else {
+      lastName.current.classList = "formInput__input formInput__inputSuccess";
+      setLastNameMessage("");
+    }
+    // email
+    if (email.current.value === "") {
+      email.current.classList = "formInput__input formInput__inputInvalid";
+      setEmailMessage("Email field cannot be blank");
+    } else if (!handleEmail(email.current.value)) {
+      email.current.classList = "formInput__input formInput__inputInvalid";
+      setEmailMessage("Please enter a valid email such as 'email@email.com'");
+    } else {
+      email.current.classList = "formInput__input formInput__inputSuccess";
+      email.current.classList = "formInput__input formInput__inputInvalid";
+      setEmailMessage("");
+    }
+    // phone
+    if (phoneNumber.current.value === "") {
+      phoneNumber.current.classList =
+        "formInput__input formInput__inputInvalid";
+      setPhoneMessage("Phone Number field cannot be blank");
+    } else {
+      phoneNumber.current.classList =
+        "formInput__input formInput__inputSuccess";
+      setPhoneMessage("");
+    }
+  };
 
   const handleChange = (e) => {
-    setState((prev) => {
+    setPasswords((prev) => {
       return {
         ...prev,
         [e.target.name]: e.target.value,
@@ -26,24 +86,41 @@ function Form(props) {
   };
 
   useEffect(() => {
+    if (hasBeenSubmitted === true && passwords.password === "") {
+      password.current.classList = "formInput__input formInput__inputInvalid";
+      setPasswordMessage("Password field cannot be blank");
+    }
+    if (hasBeenSubmitted === true && passwords.confirmPassword === "") {
+      confirmPassword.current.classList =
+        "formInput__input formInput__inputInvalid";
+      setconfirmPasswordMessage("Confirm Password field cannot be blank");
+    }
+  }, [hasBeenSubmitted, passwords]);
+
+  useEffect(() => {
     const handlePasswordMatching = () => {
-      if (state.password === "" && state.confirmPassword === "") {
+      if (passwords.password === "" && passwords.confirmPassword === "") {
         setPasswordMessage("");
-      } else if (state.password !== state.confirmPassword) {
-        console.log("passwords no longer equal");
-        setPasswordMessage("** Passwords Do Not Match");
-      } else if (state.password === state.confirmPassword) {
+      } else if (passwords.password !== passwords.confirmPassword) {
+        password.current.classList = "formInput__input formInput__inputInvalid";
+        confirmPassword.current.classList =
+          "formInput__input formInput__inputInvalid";
+        setPasswordMessage("Passwords Do Not Match");
+        setconfirmPasswordMessage("Passwords Do not Match");
+      } else if (passwords.password === passwords.confirmPassword) {
+        password.current.classList = "formInput__input formInput__inputSuccess";
+        confirmPassword.current.classList =
+          "formInput__input formInput__inputSuccess";
         setPasswordMessage("Passwords Match");
+        setconfirmPasswordMessage("Passwords Match");
       }
     };
-    console.log(`password: ${state.password}`);
-    console.log(`confirm password: ${state.confirmPassword}`);
     handlePasswordMatching();
-  }, [state]);
+  }, [passwords]);
 
   return (
     <div className="form">
-      <a href="https://linktr.ee/kurtisiveycodes">
+      <a data-testid="linkTreeLink" href="https://linktr.ee/kurtisiveycodes">
         <Icon
           alt="linkTree media link"
           className="form__linkTree"
@@ -55,7 +132,10 @@ function Form(props) {
         </div>
       </a>
 
-      <a href="https://github.com/Kitsunebackfire/signUpForm2responsive">
+      <a
+        data-testid="githubLink"
+        href="https://github.com/Kitsunebackfire/signUpForm2responsive"
+      >
         <Icon
           alt="github repository link"
           className="form__github"
@@ -83,7 +163,6 @@ function Form(props) {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            props.checkPassword(e);
           }}
           className="form__formContainer"
         >
@@ -95,6 +174,7 @@ function Form(props) {
               labelText={"FIRST NAME"}
               placeholder={"John"}
               type={"text"}
+              message={firstNameMessage}
             />
             <FormInput
               ref={lastName}
@@ -102,6 +182,7 @@ function Form(props) {
               labelText={"LAST NAME"}
               placeholder={"DOE"}
               type={"text"}
+              message={lastNameMessage}
             />
             <FormInput
               ref={email}
@@ -109,13 +190,15 @@ function Form(props) {
               labelText={"EMAIL"}
               placeholder={"email@gmail.com"}
               type={"email"}
+              message={emailMessage}
             />
             <FormInput
               ref={phoneNumber}
               id={"phoneNumber"}
               labelText={"PHONE NUMBER"}
-              placeholder={"123-456-7890"}
+              placeholder={"1234567890"}
               type={"tel"}
+              message={phoneMessage}
             />
             <FormInput
               ref={password}
@@ -124,7 +207,7 @@ function Form(props) {
               type={"password"}
               placeholder={"Enter a Password"}
               handleChange={handleChange}
-              passwordMessage={passwordMessage}
+              message={passwordMessage}
             />
             <FormInput
               ref={confirmPassword}
@@ -133,13 +216,16 @@ function Form(props) {
               placeholder={"Reenter Password"}
               type={"password"}
               handleChange={handleChange}
-              passwordMessage={passwordMessage}
+              message={confirmPasswordMessage}
             />
           </div>
 
           <div className="form__createAccountContainer">
             <button
-              onClick={() => console.log(email.current)}
+              onClick={() => {
+                handleSubmit();
+                console.log(firstName.current.classList);
+              }}
               className="form__createAccountBtn"
             >
               Create Account
