@@ -64,6 +64,7 @@
     }
     .wallpaper__creditContainer {
         position: absolute;
+        height: 12px;
         bottom: 5px;
         left: 0;
         right: 0;

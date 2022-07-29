@@ -6,15 +6,17 @@
   overflow: hidden;
 }
 
-.form-validation-error {
-  border: 1px solid red;
-}
 
 .form__serviceMessage {
   background-color: rgb(225, 225, 225);
   padding: 25px;
   height: 20vh;
 }
+
+.form__formContainer {
+  background-color: white;
+}
+
 .form__inputContainer {
   height: auto;
   padding: 25px 25px 30px 25px;
@@ -32,7 +34,7 @@
 }
 .form__createAccountContainer {
   background-color: rgb(225, 225, 225);
-  height: 45vh;
+  height: 55vh;
   overflow: hidden;
   padding: 25px 13px 25px 25px;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr))
@@ -147,6 +149,12 @@ margin-top: 5px;
   .form {
     overflow: scroll;
   }
+  .form__createAccountContainer {
+    
+    height: 75vh;
+    
+  
+  }
 }
 
 @media screen and (max-width: 670px) {
@@ -204,6 +212,10 @@ margin-top: 5px;
     text-align: center;
     min-height: 100px;
     height: auto;
+  }
+
+  .form__formContainer {
+    background-color: transparent;
   }
 
   .form__inputContainer {

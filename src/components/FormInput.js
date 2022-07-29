@@ -13,12 +13,13 @@ const FormInput = React.forwardRef((props, ref) => {
           <div>
             <input
               ref={ref}
-              placeholder={props.placeholder ? props.placeholder : null}
+              placeholder={props.placeholder}
               required
               className="formInput__input"
               id={props.id}
               name={props.id}
               type={props.type}
+              value={props.currentInput}
               onChange={(e) => {
                 //console.log(e.target.type);
                 props.handleChange(e);
@@ -39,7 +40,7 @@ const FormInput = React.forwardRef((props, ref) => {
         <>
           <input
             ref={ref}
-            placeholder={props.placeholder ? props.placeholder : null}
+            placeholder={props.placeholder}
             required
             className="formInput__input"
             id={props.id}

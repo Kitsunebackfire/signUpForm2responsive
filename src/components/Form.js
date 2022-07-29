@@ -5,7 +5,7 @@ import Icon from "@mdi/react";
 import { mdiAccountCircle } from "@mdi/js";
 import { mdiGithub } from "@mdi/js";
 
-function Form(props) {
+function Form() {
   const firstName = useRef(null);
   const lastName = useRef(null);
   const email = useRef(null);
